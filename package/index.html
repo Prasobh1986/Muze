@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html manifest="" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Muze</title>
+    <style type="text/css">
+         /**
+         * Example of an initial loading indicator.
+         * It is recommended to keep this as minimal as possible to provide instant feedback
+         * while other resources are still being loaded for the first time
+         */
+        html, body {
+            height: 100%;
+            background-color: #231714
+        }
+
+        #appLoadingIndicator {
+            position: absolute;
+            top: 50%;
+            margin-top: -90px;
+            text-align: center;
+            width: 100%;
+            height: 180px;
+            -webkit-animation-name: appLoadingIndicator;
+            -webkit-animation-duration: 0.5s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction: linear;
+			background:url(./resources/images/logo.png) no-repeat center;
+			
+        
+        }
+		.copyright {
+			color: #7E7C7C;
+			position: absolute;
+			bottom: 0;
+			right: 5px;
+			}
+
+    </style>
+	<script type="text/javascript" charset="utf-8">
+
+
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap-1.1.0.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `deviceready`.
+    //
+   
+
+
+    // PhoneGap is loaded and it is now safe to call PhoneGap methods
+    //
+    function onDeviceReady() {
+        // Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+		 document.addEventListener("pause", onPauseKeyDown, false);
+		
+    }
+
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+			Muze.app.getController('ClubListPanel').onBackButtonTapped();
+		
+        
+    }
+	
+	function onPauseKeyDown(){
+		Muze.app.getController('FlightSearchPanel').onPauseButtonTapped();
+		
+	}
+
+
+    </script>
+    <!-- The line below must be kept intact for Sencha Command to build your application -->
+    <script type="text/javascript">(function(h){function f(c,d){document.write('<meta name="'+c+'" content="'+d+'">')}if("undefined"===typeof g)var g=h.Ext={};g.blink=function(c){var d=c.js||[],c=c.css||[],b,e,a;f("viewport","width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no");f("apple-mobile-web-app-capable","yes");f("apple-touch-fullscreen","yes");b=0;for(e=c.length;b<e;b++)a=c[b],"string"!=typeof a&&(a=a.path),document.write('<link rel="stylesheet" href="'+a+'">');b=0;for(e=d.length;b<
+e;b++)a=d[b],"string"!=typeof a&&(a=a.path),document.write('<script src="'+a+'"><\/script>')}})(this);;Ext.blink({"id":"0d189a6e-15b3-484f-b814-a8ab40a52f64","js":[{"path":"cordova.js","update":"delta","type":"js"},{"path":"app.js","bundle":true,"update":"delta","type":"js"}],"css":[{"path":"resources/css/app.css","update":"delta","type":"css"},{"path":"resources/css/muze.css","update":"delta","type":"css"}]})</script>
+</head>
+<body>
+    <div id="appLoadingIndicator" class="apploadersize">
+		
+    </div>
+	<div class="copyright">&#169; reverberate</div>
+	
+</body>
+</html>
